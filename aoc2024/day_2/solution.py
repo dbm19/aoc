@@ -67,19 +67,24 @@ def part2(input):
             
             if i == (len(n) - 1):
                 safe_total += 1
-
+    print(safe_total)
     print("safe total with dampener =", safe_total)
 
 def make_test_lists(n, i):
     test_list_1 = n.copy()
     test_list_2 = n.copy()
+    test_list_3 = n.copy()
     test_list_1.pop(i)
     test_list_2.pop(i - 1)
-    print(test_list_1, test_list_2)
+    test_list_3.pop(0) #this is to cover the edge in which you get a safe report by removing the first level
+    print(test_list_1, test_list_2, test_list_3)
 
     if check_list(test_list_1):
+        print("huh")
         return 1
     elif check_list(test_list_2):
+        return 1
+    elif check_list(test_list_3):
         return 1
     else:
         return 0
