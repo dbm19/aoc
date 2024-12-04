@@ -39,13 +39,29 @@ def part1(input):
                     if input[j - 1][i] == "M" and input[j - 2][i] == "A" and input[j - 3][i] == "S":
                         xmas_total += 1 
  
-
     print(xmas_total)
-    pass
 
 def part2(input):
-    pass
+    x_mas_total = 0
+    
+    for i, n in enumerate(input):
+        input[i] = list(n) 
+    
+    for j, n in enumerate(input):
+        for i in range(0, len(n)):
+            if n[i] == "A":
+                if i < len(n) - 1 and i > 0 and j > 0 and j < len(input) - 1:
+                    if input[j - 1][i - 1] == "M" and input[j - 1][i + 1] == "M" and input[j + 1][i - 1] == "S" and input[j + 1][i + 1] == "S":
+                        x_mas_total += 1
+                    if input[j - 1][i - 1] == "S" and input[j - 1][i + 1] == "S" and input[j + 1][i - 1] == "M" and input[j + 1][i + 1] == "M": 
+                        x_mas_total += 1
+                    if input[j - 1][i - 1] == "S" and input[j - 1][i + 1] == "M" and input[j + 1][i - 1] == "S" and input[j + 1][i + 1] == "M":
+                        x_mas_total += 1
+                    if input[j - 1][i - 1] == "M" and input[j - 1][i + 1] == "S" and input[j + 1][i - 1] == "M" and input[j + 1][i + 1] == "S":          
+                        x_mas_total += 1
 
+    print(x_mas_total)
+                    
 if __name__ == "__main__":
     for input_file in sys.argv[1:]:
         part1(parse(input_file))
